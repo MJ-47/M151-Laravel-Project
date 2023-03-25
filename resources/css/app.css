@@ -1,0 +1,13 @@
+.body {
+    font-family: "Roboto Mono Medium";
+}
+
+.center {
+    display: flex;
+    justify-content: center;
+
+}
+
+.input-form {
+
+}
