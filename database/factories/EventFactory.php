@@ -9,15 +9,12 @@ use Illuminate\Database\Eloquent\Factories\Factory;
  */
 class EventFactory extends Factory
 {
-    /**
-     * Define the model's default state.
-     *
-     * @return array<string, mixed>
-     */
     public function definition(): array
     {
         return [
-            //
+            'title' => $this->faker->words(5, true),
+            'description' => $this->faker->text,
+            'date' => $this->faker->date('d.m.Y'),
         ];
     }
 }

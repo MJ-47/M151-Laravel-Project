@@ -1,83 +1,64 @@
-<!DOCTYPE html>
+@extends('layout')
 
-<header></header>
+@section('page')
+    <div>
+        <h1 class="text-center mb-16 mt-20 font-bold text-5xl">{{ $event->title }}</h1>
 
-<html>
-<link rel="stylesheet" href=css/app.css">
+        <p class="text-center pb-4">
+            Description: {{ $event->description }}
+        </p>
 
-<style>
-    body {
-        font-family: "Roboto Mono Medium";
-    }
+        <p class="text-center font-bold">
+            When: {{ $event->date }}
+        </p>
+    </div>
 
-    .center {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        flex-direction: column;
-    }
+    <h2 class="text-center my-10 font-bold text-2xl">Sign Up for Event</h2>
 
-    .input-form div {
-        width: 700px;
-        align-content: center;
-    }
+    <div class="flex items-center w-full">
+        <div class="text-center self-center text-black items-center w-1/3 h-400 bg-gray-300 rounded-lg p-5 mx-auto">
+            <form method="post" action='?'>
+                <div class="center">
+                    @csrf
+                    <div class="flex space-between my-2">
+                        <label class="self-start mr-auto">Email</label>
+                        <input class="h-8 w-80 rounded-b-lgs" type="email" id="email" name="email" value="">
+                    </div>
 
-    .login-button {
-        align-self: center;
-        color: white;
-        background: lightseagreen;
-        border: none;
-        height: 30px;
-        width: 100%;
-        border-radius: 20px;
-        font-size: 12pt;
-        cursor: auto;
-    }
+                    <div class="flex space-between my-2">
+                        <label class="self-start mr-auto">First Name</label>
+                        <input class="h-8 w-80 rounded-b-lgs" type="text" id="first_name" name="first_name" value="">
+                    </div>
 
-</style>
+                    <div class="flex space-between my-2">
+                        <label class="self-start mr-auto">Last Name</label>
+                        <input class="h-8 w-80 rounded-b-lgs" type="text" id="last_name" name="last_name" value="">
+                    </div>
 
-<body>
-<h1>Events</h1>
-<br>
-<div class="center">
-    <form method="post" action='?'>
-        <div class="input-form">
-            @csrf
-            <div>
-                <label>Email</label>
-                <input type="email" id="email_address" name="email_address" value="">
-            </div>
-
-            <div>
-                <label>First Name</label>
-                <input type="text" id="first_name" name="first_name" value="">
-            </div>
-
-            <div>
-                <label>Last Name</label>
-                <input type="text" id="last_name" name="last_name" value="">
-            </div>
-
-            <div>
-                <input type="radio" id="answer" name="answer" value="Yes">
-                <label>Ja, ich nehme teil.</label>
-                <input type="radio" id="answer" name="answer" value="No">
-                <label>Nein, ich komme nicht.</label>
-            </div>
+                    <div class="flex space-between my-2">
+                        <input class="m-1" type="radio" id="answer" name="answer" value="yes">
+                        <label class="mr-2"> Yes, I will be attending.</label>
+                        <input class="m-1" type="radio" id="answer" name="answer" value="no">
+                        <label class="mr-2"> No, I won't be attending.</label>
+                    </div>
 
 
-            <div>
-                <button type="submit" class="login-button">Login</button>
-            </div>
-
-            <div>
-                <a href="/event/applications" >View Applications</a>
-            </div>
+                    <div>
+                        <button type="submit" class="cursor-pointer self-center bg-blue-400 p-2 rounded-md text-white">
+                            Sign Up
+                        </button>
+                    </div>
+                </div>
+            </form>
         </div>
-    </form>
-</div>
-</body>
-</html>
+    </div>
 
 
-<form action=""></form>
+    <div class="text-center">
+        <div class="self-center my-10">
+            <a class="cursor-pointer self-center bg-blue-400 p-2 rounded-md m-7 text-white"
+               href="/event/{{$event->id}}/applications">View Applications</a>
+        </div>
+    </div>
+
+@endsection
